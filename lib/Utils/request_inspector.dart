@@ -17,7 +17,7 @@ class RequestInspector implements InterceptorContract {
     String methodType = "";
     if (requestBody.containsKey('query')) {
       methodType = "Query";
-      requestBody['query'] = formatGraphQLQuery(requestBody['query']);
+      // requestBody['query'] = formatGraphQLQuery(requestBody['query']);
     } else if (requestBody.containsKey('mutation')) {
       methodType = "Mutation";
       requestBody['mutation'] = formatGraphQLQuery(requestBody['mutation']);
