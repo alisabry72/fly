@@ -26,7 +26,6 @@ class APIManager {
     _client = InterceptedClient.build(
       interceptors: [
         LoggingInterceptor(),
-        RequestInspector(),
       ],
     );
   }
