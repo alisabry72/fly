@@ -17,10 +17,16 @@ class RequestInspector implements InterceptorContract {
     String methodType = "";
     if (requestBody.containsKey('query')) {
       methodType = "Query";
-      // requestBody['query'] = formatGraphQLQuery(requestBody['query']);
+      if (requestBody['query'].length > 2000)
+        requestBody['query'] = {};
+      else
+        requestBody['query'] = formatGraphQLQuery(requestBody['query']);
     } else if (requestBody.containsKey('mutation')) {
       methodType = "Mutation";
-      requestBody['mutation'] = formatGraphQLQuery(requestBody['mutation']);
+      if (requestBody['mutation'].length > 2000)
+        requestBody['mutation'] = {};
+      else
+        requestBody['mutation'] = formatGraphQLQuery(requestBody['mutation']);
     }
 
     InspectorController().addNewRequest(
