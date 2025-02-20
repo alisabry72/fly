@@ -60,13 +60,11 @@ class RequestInspector implements InterceptorContract {
 
   @override
   FutureOr<bool> shouldInterceptRequest() {
-    // TODO: implement shouldInterceptRequest
-    throw UnimplementedError();
+    return true;
   }
 
   @override
   FutureOr<bool> shouldInterceptResponse() {
-    // TODO: implement shouldInterceptResponse
-    throw UnimplementedError();
+    return true;
   }
 }
