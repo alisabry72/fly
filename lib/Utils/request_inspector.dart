@@ -1,19 +1,22 @@
+import 'dart:async';
 import 'dart:convert';
 
+import 'package:fly_networking/http_middleware/models/response_data.dart';
 import 'package:graphql_parser2/graphql_parser2.dart';
-import 'package:http_interceptor/http/interceptor_contract.dart';
-import 'package:http_interceptor/models/models.dart';
+import 'package:http_interceptor/http_interceptor.dart';
 import 'package:requests_inspector/requests_inspector.dart';
 
 class RequestInspector implements InterceptorContract {
   @override
-  Future<RequestData> interceptRequest({required RequestData data}) async {
-    return data;
+  Future<BaseRequest> interceptRequest({required BaseRequest request}) async {
+    return request;
   }
 
   @override
-  Future<ResponseData> interceptResponse({required ResponseData data}) async {
-    final requestBody = jsonDecode(data.request?.body) as Map<String, dynamic>;
+  Future<BaseResponse> interceptResponse(
+      {required BaseResponse response}) async {
+    final data = response as ResponseData;
+    final requestBody = jsonDecode(data.body) as Map<String, dynamic>;
     String methodType = "";
     if (requestBody.containsKey('query')) {
       methodType = "Query";
@@ -34,13 +37,13 @@ class RequestInspector implements InterceptorContract {
         requestName: methodType,
         requestMethod: RequestMethod.POST,
         requestBody: requestBody,
-        url: data.request?.url ?? "",
+        url: data.url,
         queryParameters: "",
         statusCode: data.statusCode,
-        responseBody: jsonDecode(data.body ?? ""),
+        responseBody: jsonDecode(data.body),
       ),
     );
-    return data;
+    return data as BaseResponse;
   }
 
   String? formatGraphQLQuery(String requestBody) {
@@ -53,5 +56,17 @@ class RequestInspector implements InterceptorContract {
     doc.span?.text.replaceAll("}", "\n}\n");
     doc.span?.text.replaceAll("{", "\n{\n");
     return doc.span?.text;
+  }
+
+  @override
+  FutureOr<bool> shouldInterceptRequest() {
+    // TODO: implement shouldInterceptRequest
+    throw UnimplementedError();
+  }
+
+  @override
+  FutureOr<bool> shouldInterceptResponse() {
+    // TODO: implement shouldInterceptResponse
+    throw UnimplementedError();
   }
 }

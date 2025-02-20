@@ -1,8 +1,9 @@
 import 'dart:async';
-import 'dart:typed_data';
+
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:http/io_client.dart';
+
 import 'middleware_contract.dart';
 
 ///Class to be used by the user to set up a new `http.Client` with middleware supported.

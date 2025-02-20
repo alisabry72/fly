@@ -82,11 +82,7 @@ class Logger {
       //Log the request body
       if (logBody) {
         print("BODY:");
-        if (data.body == null) {
-          print("Request has no boy.");
-        } else {
-          print(data.body);
-        }
+        print(data.body);
       }
     }
 

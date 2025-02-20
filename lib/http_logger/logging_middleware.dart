@@ -10,7 +10,7 @@ class HttpLogger implements MiddlewareContract {
   late Logger logger;
 
   HttpLogger({
-    this.logLevel: LogLevel.BODY,
+    this.logLevel = LogLevel.BODY,
   }) {
     logger = Logger(logLevel: logLevel);
   }

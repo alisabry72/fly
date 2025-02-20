@@ -1,14 +1,14 @@
 library fly_networking;
 
-import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
 
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:fly_networking/NetworkProvider/APIManager.dart';
 import 'package:fly_networking/NetworkProvider/APIManager_Web.dart';
 import 'package:fly_networking/Utils/ErrorUtil.dart';
 import 'package:http/http.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+
 import 'AppException.dart';
 import 'GraphQB/graph_qb.dart';
 

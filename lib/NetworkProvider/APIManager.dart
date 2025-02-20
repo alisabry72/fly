@@ -1,10 +1,8 @@
-import 'dart:async';
 import 'dart:core';
 import 'dart:io';
 
 import 'package:fly_networking/Utils/logging_interceptor.dart';
-import 'package:http/http.dart' show Response;
-import 'package:http_interceptor/http/http.dart';
+import 'package:http_interceptor/http_interceptor.dart';
 
 import '../Utils/request_inspector.dart';
 
@@ -51,5 +49,6 @@ class APIManager {
     } catch (e) {
       print("post req Failed $e");
     }
+    return null;
   }
 }
