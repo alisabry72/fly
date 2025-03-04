@@ -4,15 +4,14 @@ import 'package:http_interceptor/http_interceptor.dart';
 
 class LoggingInterceptor implements InterceptorContract {
   @override
-  Future<BaseRequest> interceptRequest({required BaseRequest request}) async {
-    print(request.toString());
+  FutureOr<BaseRequest> interceptRequest({required BaseRequest request}) {
+    print("Request: ${request.toString()}");
     return request;
   }
 
   @override
-  Future<BaseResponse> interceptResponse(
-      {required BaseResponse response}) async {
-    print(response.toString());
+  FutureOr<BaseResponse> interceptResponse({required BaseResponse response}) {
+    print("Response: ${response.toString()}");
     return response;
   }
 

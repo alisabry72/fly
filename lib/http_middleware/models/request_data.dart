@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../http_methods.dart';
+import 'package:fly_networking/http_middleware/http_methods.dart';
 
 class RequestData {
   Method method;

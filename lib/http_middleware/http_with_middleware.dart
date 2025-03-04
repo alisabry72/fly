@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
+
 import 'package:http/http.dart';
+
 import 'http_methods.dart';
 import 'middleware_contract.dart';
 import 'models/request_data.dart';

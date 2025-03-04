@@ -43,8 +43,7 @@ class APIManager {
       else
         uri = Uri.http(uri.authority, uri.path);
 
-      final Response response =
-          await _client.post(uri, body: body, headers: map);
+      final response = await _client.post(uri, body: body, headers: map);
       return response;
     } catch (e) {
       print("i failed");

@@ -2,21 +2,21 @@ import 'package:http/http.dart';
 
 import '../http_methods.dart';
 
-class ResponseData {
+class ResponseData extends BaseResponse {
   String url;
-  int statusCode;
+
   Method method;
-  Map<String, String>? headers;
+  Map<String, String> headers;
   String body;
   int? contentLength;
   bool isRedirect;
   bool persistentConnection;
 
-  ResponseData({
+  ResponseData(
+    super.statusCode, {
     required this.method,
     required this.url,
-    required this.statusCode,
-    this.headers,
+    required this.headers,
     required this.body,
     this.contentLength,
     required this.isRedirect,
@@ -25,7 +25,7 @@ class ResponseData {
 
   factory ResponseData.fromHttpResponse(Response response) {
     return ResponseData(
-      statusCode: response.statusCode,
+      response.statusCode,
       headers: response.headers,
       body: response.body,
       contentLength: response.contentLength,
