@@ -47,6 +47,7 @@ class APIManager {
           await _client.post(uri, body: body, headers: map);
       return response;
     } catch (e) {
+      print("i failed");
       print("post req Failed $e");
     }
     return null;
