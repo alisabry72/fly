@@ -130,9 +130,10 @@ class Fly<T> {
     Map<String, dynamic> myData = json.decode(response.body);
     // has error
     if (myData.containsKey("errors")) {
-      String? error = myData['errors'][0]['message'];
-      int? code = myData['errors'][0]['extensions']['code'];
-      String? title = myData['errors'][0]['extensions']['title'];
+      var errorItem = myData['errors'][0];
+      String? error = errorItem['message'];
+      int? code = errorItem['extensions']?['code'];
+      String? title = errorItem['extensions']?['title'];
 
       throw AppException(
         true,
