@@ -19,6 +19,20 @@ class WebAPIManager {
     map.addAll(headers);
   }
 
+  /// Remove multiple header keys from the current header map.
+  /// Passing an empty or null list does nothing.
+  void removeHeaders(List<String>? keys) {
+    if (keys == null || keys.isEmpty) return;
+    for (final key in keys) {
+      map.remove(key);
+    }
+  }
+
+  /// Remove a single header key.
+  void removeHeader(String key) {
+    map.remove(key);
+  }
+
   Future<http.Response?> post(
     String apiPath, {
     String? body,

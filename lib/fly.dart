@@ -170,6 +170,18 @@ class Fly<T> {
     _apiManager.setHeaders(headers);
     _webAPIManager.setHeaders(headers);
   }
+
+  /// Remove multiple header keys from both API managers.
+  void removeHeaders(List<String>? keys) {
+    _apiManager.removeHeaders(keys);
+    _webAPIManager.removeHeaders(keys);
+  }
+
+  /// Remove a single header key from both API managers.
+  void removeHeader(String key) {
+    _apiManager.removeHeader(key);
+    _webAPIManager.removeHeader(key);
+  }
 }
 
 abstract class Parser<T> {
